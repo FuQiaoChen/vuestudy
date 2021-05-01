@@ -3,12 +3,14 @@
     <h4>{{ tittle }}</h4>
     <div>{{ param01 }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ param02 }}</div>
     <div id="list">
-      <li class="li" v-for="(a, i) in param03">{{ i }}:{{ a }}</li>
+      <!-- v-for需加冒号：否则会报警告，但不影响力使用-->
+      <li class="li" v-for:="(a,i) in param03">{{ i }}:{{ a }}</li>
     </div>
   </div>
 </template>
 
-<script>        //父传子
+<script>
+//父传子
 export default {
   name: "comp02",
   props: {
