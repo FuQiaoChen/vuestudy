@@ -9,14 +9,15 @@
 </template>
 
 <script>
-// export default {
-//     data(){
-//         return{
+export default {
+  name:'compreh',
+    data(){
+        return{
+          
+        }
+    },
 
-//         }
-//     }
-
-// }
+}
 </script>
 
 <style>

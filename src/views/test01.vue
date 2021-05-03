@@ -22,7 +22,7 @@ import comp05 from "../components/test01/st-05-data";
 export default {
   name: "test01",
   components: {
-    //组件注册
+    //组件注册 此处无懒加载一说
     comp01,
     comp02,
     comp03,
