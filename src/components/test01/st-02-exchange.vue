@@ -14,7 +14,7 @@
 export default {
   name: "comp02",
   props: {
-    //外部传入数据声明
+    //声明数据的属性
     param01: {
       type: String, //验证数据类型：string Number boolean Array Objecr Date Function Symbol
       default: "请给数据", //默认值

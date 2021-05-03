@@ -1,61 +1,24 @@
 <template>
-  <div>
-    <div>{{ wellcome }}</div>
-    <!--  应用组件01(即创建组件实例) 直接传入数据，自定义标签都是自结束的，只能添加属性值，不能再放入文本-->
-    <comp01 param01="I am comming" param02="!!!" />
-    <!-- 应用组件02：将参数绑定在父组件中 不用在标签中直接输入参数 其实质是向子组件中传入数据-->
-    <comp02 :param01="cparam01" :param02="cparam02" :param03="cparam03" />
-    <!-- 应用组件03：-->
-    <comp03 @btnclick="cbtnclick"></comp03>
-    <comp04 />
-    <comp05 />
+  <div id="nav">
+    <!-- 用tag属性把<router-link>类似的<a>标签改为buttom好像不好使，只好用代码的方式实现了，晕。。。 -->
+    <!-- <router-link to="/test01" tag="li">练习-1</router-link> ||  
+    <router-link to="/test02" tag="button">练习-2</router-link> -->
+    <button class="btn" @click="btna">组合练习-1</button>
+    <button class="btn" @click="btnb">组合练习-2</button>
   </div>
+  <!-- <router-view />是必须有的 本质上就是占位    -->
+  <router-view />
 </template>
 
 <script>
-import comp01 from "./components/test01/st-01-comp.vue"; //导入局部组件文件 父传子案例
-import comp02 from "./components/test01/st-02-exchange.vue"; //父传子案例
-import comp03 from "./components/test01/st-03-exchange-child2parent.vue"; //子传父案例
-import comp04 from "./components/test01/st-04-form.vue"; //
-import comp05 from "./components/test01/st-05-children";
-
 export default {
-  name: "App",
-  components: {
-    //组件注册
-    comp01,
-    comp02,
-    comp03,
-    comp04,
-    comp05,
-  },
-  data: function () {
-    return {
-      //准备子组件中的数据
-      wellcome: "Wellcome home",
-      cparam01: "comming",
-      cparam02: "下面是列表数据",
-      cparam03: {
-        //子组件中的数据类型：string Number boolean Array Objecr Date Function Symbol均可
-        name: "zhang san",
-        gender: "male",
-        age: 19,
-      },
-    };
-  },
   methods: {
-    cbtnclick(citem) {
-      console.log(
-        "*******************通过传递参数获取数据*********************"
-      );
-      console.log(citem);
-      console.log(citem.id);
-      console.log(citem.name);
-      console.log(
-        "*******************默认的event事件获取数据******************"
-      );
-      console.log(event);
-      console.log(event.target.innerHTML);
+    //通过监听绑定方法来达到页面跳转，替代<router-link>标签
+    btna() {
+      this.$router.push("/test01"); //router的内置方式，类似于history.pushstate() 也可用replace等
+    },
+    btnb() {
+      this.$router.push("/test02");
     },
   },
 };
@@ -68,6 +31,26 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 20px;
+}
+
+#nav {
+  padding: 5px;
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+
+    // &.router-link-exact-active {
+    //   text-decoration: none;
+    //   display: inline-block;
+    //   color: #42b983;
+    // }
+  }
+  // .router-link-exact-active:hover {    //router内置激活时的class，可用于设置css
+  //   color: #ff0000;
+  // }
+.btn:hover{
+  color: #ff0000;
+}
+
 }
 </style>
