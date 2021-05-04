@@ -8,7 +8,8 @@
     <!-- 应用组件03：-->
     <comp03 @btnclick="cbtnclick"></comp03>
     <comp04 />
-    <comp05 />
+    <comp05 ref="aaa" />
+    <button @click="btndata">数据按钮</button>
   </div>
 </template>
 
@@ -59,6 +60,9 @@ export default {
       console.log(event);
       console.log(event.target.innerHTML);
     },
+    btndata(){
+      console.log(this.$parent)
+    }
   },
 };
 </script>
